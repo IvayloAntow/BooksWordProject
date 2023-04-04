@@ -23,33 +23,33 @@ public class SecurityConfiguration {
                 // everyone can download static resources (css, js, images)
                         requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll().
                 // everyone can login and register
-                        antMatchers("/", "/users/login", "/users/register").permitAll().
+                        antMatchers("/", "/users/login", "/users/register").permitAll();
                 // pages available only for admins
-                        antMatchers("/pages/admins").hasRole(UserRoleEnum.Admin.name()).
+                       // antMatchers("/pages/admins").hasRole(UserRoleEnum.Admin.name()).
                 // all other pages are available for logger in users
-                        anyRequest().
-                authenticated().
-                and().
+                       // anyRequest().
+              //  authenticated().
+              //  and().
                 // configuration of form login
-                        formLogin().
+                    //    formLogin().
                 // the custom login form
-                        loginPage("/users/login").
+                     //   loginPage("/users/login").
                 // the name of the username form field
-                        usernameParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY).
+                     //   usernameParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY).
                 // the name of the password form field
-                        passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY).
+                      //  passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY).
                 // where to go in case that the login is successful
-                        defaultSuccessUrl("/").
+                      //  defaultSuccessUrl("/").
                 // where to go in case that the login failed
-                        failureForwardUrl("/users/login-error").
-                and().
+                      //  failureForwardUrl("/users/login-error").
+               // and().
                 // configure logut
-                        logout().
+                    //    logout().
                 // which is the logout url
-                        logoutUrl("/users/logout").
+                      //  logoutUrl("/users/logout").
                 // invalidate the session and delete the cookies
-                        invalidateHttpSession(true).
-                deleteCookies("JSESSIONID");
+                      //  invalidateHttpSession(true).
+               // deleteCookies("JSESSIONID");
 
 
         return httpSecurity.build();

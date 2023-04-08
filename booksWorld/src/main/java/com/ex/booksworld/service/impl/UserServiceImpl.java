@@ -8,6 +8,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -38,8 +40,24 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserServiceModel findByUsernameAndPassword(String username, String password) {
 
-        return userRepository.findByUsernameAndPassword(username , password)
-                .map(user -> modelMapper.map(user, UserServiceModel.class))
-                .orElse(null);
+        boolean isFound = false;
+
+        Optional<UserEntity>userr = userRepository.findByUsername(username);
+        if (userr.isPresent()) {
+            if (BCrypt.checkpw(password,userr.get().getPassword() )){
+                isFound = true;
+            }
+
+        }
+
+        if (isFound) {
+
+            return userr
+                    .map(user -> modelMapper.map(user, UserServiceModel.class))
+                    .orElse(null);
+        }
+        return null;
+
     }
+
 }

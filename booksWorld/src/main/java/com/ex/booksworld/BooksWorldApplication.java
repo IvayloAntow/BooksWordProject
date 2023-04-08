@@ -6,7 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
-@EnableWebSecurity
+//@EnableWebSecurity
+
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class })
 //@EnableAutoConfiguration
 public class BooksWorldApplication {

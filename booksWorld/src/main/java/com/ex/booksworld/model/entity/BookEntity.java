@@ -26,6 +26,7 @@ public class BookEntity extends BaseEntity{
 
     public BookEntity() {
         genre = new ArrayList<>();
+        author= new ArrayList<>();
     }
 
     public String getTitle() {
@@ -50,8 +51,8 @@ public class BookEntity extends BaseEntity{
         return author;
     }
 
-    public BookEntity setAuthor(List<AuthorEntity> author) {
-        this.author = author;
+    public BookEntity setAuthor(AuthorEntity author) {
+        this.author.add(author);
         return this;
     }
 
@@ -59,8 +60,8 @@ public class BookEntity extends BaseEntity{
         return genre;
     }
 
-    public BookEntity setGenre(List<GenreEntity> genre) {
-        this.genre = genre;
+    public BookEntity setGenre(GenreEntity genre) {
+        this.genre.add(genre);
         return this;
     }
 }

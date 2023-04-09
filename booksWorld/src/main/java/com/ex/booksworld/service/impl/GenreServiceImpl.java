@@ -5,6 +5,8 @@ import com.ex.booksworld.repository.GenreRepository;
 import com.ex.booksworld.service.GenreService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class GenreServiceImpl implements GenreService {
 
@@ -25,5 +27,10 @@ public class GenreServiceImpl implements GenreService {
             genreRepository.save(new GenreEntity().setGenre("Fantasy"));
         }
 
+    }
+
+    @Override
+    public List<GenreEntity> getAll() {
+        return genreRepository.findAll();
     }
 }

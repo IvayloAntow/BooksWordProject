@@ -82,6 +82,7 @@
 <div class="container" id="hero-container" style="padding-top: 3rem;">
     <form th:object="${userRegisterBindingModel}" method="POST" action="/users/register"
           class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center footer-newsletter">
+        <p th:if="${notFound}" class="errors alert alert-danger">Username is already used</p>
         <div class="row">
             <div class="form-group col-md-6 mb-3">
                 <label for="firstName" class="text-black font-weight-bold">First Name</label>

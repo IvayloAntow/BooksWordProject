@@ -1,15 +1,33 @@
 package com.ex.booksworld.model.service;
 
+import com.ex.booksworld.model.entity.UserRoleEntity;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class UserServiceModel {
 
     private String firstName;
     private String lastName;
     private String username;
     private String email;
+
+    private List<UserRoleEntity> userRole;
+
+    public List<UserRoleEntity> getUserRole() {
+        return userRole;
+    }
+
+    public UserServiceModel setUserRole(UserRoleEntity userRole) {
+        this.userRole.add(userRole);
+        return this;
+    }
+
     private String password;
     private String confirmPassword;
 
     public UserServiceModel() {
+        this.userRole = new ArrayList<>();
     }
 
     public String getFirstName() {

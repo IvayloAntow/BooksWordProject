@@ -18,6 +18,9 @@ public class BookEntity extends BaseEntity{
     @Column(columnDefinition = "text")
     private String description;
 
+    @Column(columnDefinition = "text")
+    private String imageUrl;
+
     @ManyToMany
     List<AuthorEntity> author ;
 
@@ -27,6 +30,25 @@ public class BookEntity extends BaseEntity{
     public BookEntity() {
         genre = new ArrayList<>();
         author= new ArrayList<>();
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public BookEntity setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+        return this;
+    }
+
+    public BookEntity setAuthor(List<AuthorEntity> author) {
+        this.author = author;
+        return this;
+    }
+
+    public BookEntity setGenre(List<GenreEntity> genre) {
+        this.genre = genre;
+        return this;
     }
 
     public String getTitle() {

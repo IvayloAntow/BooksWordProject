@@ -3,6 +3,7 @@ package com.ex.booksworld.web;
 
 import com.ex.booksworld.model.entity.BookEntity;
 import com.ex.booksworld.model.entity.GenreEntity;
+import com.ex.booksworld.model.service.BookServiceModel;
 import com.ex.booksworld.model.service.UserServiceModel;
 
 import com.ex.booksworld.service.BookService;
@@ -37,6 +38,9 @@ public class HomeController {
         model.addAttribute("genres",genres);
         model.addAttribute("username", user.getUsername());
         model.addAttribute("books", books);
+        model.addAttribute("book",new BookServiceModel());
+
+
         return "home";
     }
 

@@ -69,9 +69,9 @@
 
             <ol>
                 <li><a href="index.html">Home</a></li>
-                <li>Portfolio Details</li>
+                <li>Book details</li>
             </ol>
-            <h2>Portfolio Details</h2>
+            <h2 th:text="${book.title}"></h2>
 
         </div>
     </section><!-- End Breadcrumbs -->
@@ -87,15 +87,7 @@
                         <div class="swiper-wrapper align-items-center">
 
                             <div class="swiper-slide">
-                                <img src="assets/img/portfolio/portfolio-details-1.jpg" alt="">
-                            </div>
-
-                            <div class="swiper-slide">
-                                <img src="assets/img/portfolio/portfolio-details-2.jpg" alt="">
-                            </div>
-
-                            <div class="swiper-slide">
-                                <img src="assets/img/portfolio/portfolio-details-3.jpg" alt="">
+                                <img th:src="${book.imageUrl}" class="img-fluid" alt="" style="height: 30%">
                             </div>
 
                         </div>
@@ -107,7 +99,8 @@
                     <div class="portfolio-info">
                         <h3>Project information</h3>
                         <ul>
-                            <li><strong>Category</strong>: Web design</li>
+                            <li><strong>Category:</strong>
+                            <div th:each="p : ${genres}" > <span th:text = "${p.genre}" ></span> </div></li>
                             <li><strong>Client</strong>: ASU Company</li>
                             <li><strong>Project date</strong>: 01 March, 2020</li>
                             <li><strong>Project URL</strong>: <a href="#">www.example.com</a></li>

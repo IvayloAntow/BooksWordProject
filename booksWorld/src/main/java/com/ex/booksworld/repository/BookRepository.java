@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface BookRepository extends JpaRepository<BookEntity , String> {
 
-
+   // @Query(value = "select  b from BookEntity b left join  b.author left join  b.genre")
     List<BookEntity> findAll();
 
     @Query(value = "select distinct b from BookEntity b left join fetch b.author where b.id = :id")

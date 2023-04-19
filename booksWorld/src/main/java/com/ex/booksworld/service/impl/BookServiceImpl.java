@@ -3,10 +3,12 @@ package com.ex.booksworld.service.impl;
 import com.ex.booksworld.model.entity.AuthorEntity;
 import com.ex.booksworld.model.entity.BookEntity;
 import com.ex.booksworld.model.entity.GenreEntity;
+import com.ex.booksworld.model.service.BookServiceModel;
 import com.ex.booksworld.repository.AuthorRepository;
 import com.ex.booksworld.repository.BookRepository;
 import com.ex.booksworld.repository.GenreRepository;
 import com.ex.booksworld.service.BookService;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,10 +21,13 @@ public class BookServiceImpl implements BookService {
 
     private final AuthorRepository authorRepository;
 
-    public BookServiceImpl(BookRepository bookRepository, GenreRepository genreRepository, AuthorRepository authorRepository) {
+    private final ModelMapper modelMapper;
+
+    public BookServiceImpl(BookRepository bookRepository, GenreRepository genreRepository, AuthorRepository authorRepository, ModelMapper modelMapper) {
         this.bookRepository = bookRepository;
         this.genreRepository = genreRepository;
         this.authorRepository = authorRepository;
+        this.modelMapper = modelMapper;
     }
 
     @Override
@@ -56,5 +61,22 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<BookEntity> findAll() {
         return bookRepository.findAll();
+    }
+
+    @Override
+    public BookServiceModel findBookById(String id) {
+       BookEntity book = bookRepository.findBookById(id);
+       BookEntity book2 = bookRepository.findGenreByBookId(id);
+       BookServiceModel bookServiceModel = new BookServiceModel();
+       bookServiceModel.setAuthor(book.getAuthor());
+       bookServiceModel.setDescription(book.getDescription());
+       bookServiceModel.setTitle(book.getTitle());
+       bookServiceModel.setImageUrl(book.getImageUrl());
+
+       if (book2.getGenre().size() >0){
+           bookServiceModel.setGenre(book2.getGenre());
+       }
+
+        return bookServiceModel;
     }
 }

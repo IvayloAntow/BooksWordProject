@@ -41,15 +41,8 @@ public class BookEntity extends BaseEntity{
         return this;
     }
 
-    public BookEntity setAuthor(List<AuthorEntity> author) {
-        this.author = author;
-        return this;
-    }
 
-    public BookEntity setGenre(List<GenreEntity> genre) {
-        this.genre = genre;
-        return this;
-    }
+
 
     public String getTitle() {
         return title;

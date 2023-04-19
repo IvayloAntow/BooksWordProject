@@ -1,9 +1,9 @@
 package com.ex.booksworld.web;
 
-import com.ex.booksworld.model.entity.BookEntity;
-import com.ex.booksworld.model.entity.GenreEntity;
+import com.ex.booksworld.model.service.BookServiceModel;
 import com.ex.booksworld.model.service.UserServiceModel;
 import com.ex.booksworld.repository.BookRepository;
+import com.ex.booksworld.service.BookService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,17 +15,18 @@ import javax.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/books")
 public class BookController {
-    private  final BookRepository bookRepository;
+    private final BookService bookService;
 
-    public BookController(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;
+    public BookController(BookService bookService) {
+
+        this.bookService = bookService;
     }
 
     @GetMapping("/details/{id}")
     public String bookDetails(@PathVariable(value="id") String id, HttpSession httpSession , Model model){
         UserServiceModel user = (UserServiceModel) httpSession.getAttribute("user");
-//ToDo map to book service model
-        BookEntity book = bookRepository.findBookById(id);
+
+        BookServiceModel book = bookService.findBookById(id);
 
         model.addAttribute("book" ,book);
         //Todo fix query genres

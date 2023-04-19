@@ -16,4 +16,7 @@ public interface BookRepository extends JpaRepository<BookEntity , String> {
 
     @Query(value = "select distinct b from BookEntity b left join fetch b.author where b.id = :id")
     BookEntity findBookById(@Param("id") String id);
+
+    @Query(value = "select distinct b from BookEntity b left join fetch b.genre where b.id = :id")
+    BookEntity findGenreByBookId(@Param("id") String id);
 }

@@ -29,8 +29,7 @@ public class BookController {
         BookServiceModel book = bookService.findBookById(id);
 
         model.addAttribute("book" ,book);
-        //Todo fix query genres
-        model.addAttribute("genres" ,book.getGenre());
+
 
         if (user == null) {
 

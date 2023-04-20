@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -68,7 +68,7 @@
         <div class="container">
 
             <ol>
-                <li><a href="index.html">Home</a></li>
+                <li><a href="/">Home</a></li>
                 <li>Book details</li>
             </ol>
             <h2 th:text="${book.title}"></h2>
@@ -97,22 +97,20 @@
 
                 <div class="col-lg-4">
                     <div class="portfolio-info">
-                        <h3>Project information</h3>
+                        <h3>Book information</h3>
                         <ul>
                             <li><strong>Category:</strong>
-                            <div th:each="p : ${genres}" > <span th:text = "${p.genre}" ></span> </div></li>
-                            <li><strong>Client</strong>: ASU Company</li>
-                            <li><strong>Project date</strong>: 01 March, 2020</li>
-                            <li><strong>Project URL</strong>: <a href="#">www.example.com</a></li>
+                            <div th:each="p : ${book.genre}" th:object = "${p}" > <span th:text = "*{genre}" ></span> </div></li>
+                            <li><strong>Author: </strong>
+                                <div th:each="p : ${book.author}" th:object = "${p}" > <span th:text = "*{firstName}" ></span>
+                                    <span th:text = "*{lastName}" ></span> </div> </li>
+
                         </ul>
                     </div>
                     <div class="portfolio-description">
-                        <h2>This is an example of portfolio detail</h2>
-                        <p>
-                            Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore
-                            quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim.
-                            Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi
-                            nulla at esse enim cum deserunt eius.
+                        <h2>Book description</h2>
+                        <p th:text="${book.description}" >
+
                         </p>
                     </div>
                 </div>

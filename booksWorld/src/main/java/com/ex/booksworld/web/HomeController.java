@@ -11,6 +11,7 @@ import com.ex.booksworld.service.GenreService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -43,7 +44,6 @@ public class HomeController {
 
         return "home";
     }
-
 
 
 

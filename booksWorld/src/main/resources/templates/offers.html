@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -49,8 +49,8 @@
             <ul>
                 <li><a class="nav-link active" href="/home">Home</a></li>
                 <li><a class="nav-link" href="">About</a></li>
-                <li><a class="nav-link" href="/home">Books</a></li>
-                <li><a class="nav-link" href="/offers/details">Offers</a></li>
+                <li><a class="nav-link" href="">Books</a></li>
+                <li><a class="nav-link" href="">Offers</a></li>
                 <li><a class="nav-link" href="">Team</a></li>
                 <li><a class="nav-link " href="">Contact</a></li>
                 <li><a href="/users/logout">Logout</a></li>
@@ -61,44 +61,15 @@
     </div>
 </header>
 <section id="portfolio" class="portfolio">
-    <div class="container">
-        <div class="section-title">
-            <h2>Portfolio</h2>
-            <h3>Have fun, <span th:text="${username}"> </span></h3>
-            <p>Some books for you</p>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-12 d-flex justify-content-center">
-                <ul id="portfolio-flters">
-                    <li data-filter="*" class="filter-active">All</li>
-                </ul>
-                <ul th:each="g : ${genres}" th:object="${g}" id="portfolio-flters">
-                    <li th:text="*{genre}" th:data-filter="'.'+ *{genre}"></li>
-                </ul>
+    <div class="container" style="margin:2.5rem">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                <p class="text-info">Email</p>
             </div>
         </div>
-
-        <div class="row portfolio-container">
-            <div th:each="b : ${books}" th:object="${b}" >
-                <!-- th:class="'col-lg-4 col-md-6 portfolio-item'+ *{genre}" -->
-                <div class="col-lg-4 col-md-6 portfolio-item" style="padding: 0.5em">
-                    <img th:src="*{imageUrl}" class="img-fluid" alt="" style="height: 30%">
-                    <div class="portfolio-info">
-                        <h4 th:text="*{title}">App 1</h4>
-                        <!--                      <h4 th:text="*{author.get(0).firstName}">App 1</h4> -->
-                                               <h4 th:text="*{id}" hidden></h4>
-                       <!--                        <p>App</p>-->
-<!--                        <a href="/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery"-->
-<!--                           class="portfolio-lightbox preview-link" title="App 1"><i-->
-<!--                                class="bx bx-plus"></i></a>-->
-                        <a th:href="@{/books/details/{id}(id=*{id})}" class="details-link" title="More Details"><i
-                                class="bx bx-link"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     </div>
 </section><!-- End Portfolio Section -->
 <footer id="footer">

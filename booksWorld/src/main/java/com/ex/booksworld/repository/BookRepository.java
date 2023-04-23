@@ -1,6 +1,7 @@
 package com.ex.booksworld.repository;
 
 import com.ex.booksworld.model.entity.BookEntity;
+import com.ex.booksworld.model.entity.GenreEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -19,4 +20,7 @@ public interface BookRepository extends JpaRepository<BookEntity , String> {
 
     @Query(value = "select distinct b from BookEntity b left join fetch b.genre where b.id = :id")
     BookEntity findGenreByBookId(@Param("id") String id);
+
+    List <BookEntity> getAllByGenre(GenreEntity genre);
+
 }

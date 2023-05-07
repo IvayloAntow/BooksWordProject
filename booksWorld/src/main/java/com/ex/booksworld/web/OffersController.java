@@ -2,6 +2,7 @@ package com.ex.booksworld.web;
 
 import com.ex.booksworld.model.biding.AddOffersBindingModel;
 import com.ex.booksworld.model.biding.UserRegisterBindingModel;
+import com.ex.booksworld.model.entity.enums.AdEntityEnum;
 import com.ex.booksworld.model.service.UserServiceModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,6 +30,8 @@ public class OffersController {
 
     @GetMapping("/addOffers")
     public String addOffers(Model model){
+
+
 
         if (!model.containsAttribute("addOffersBindingModel")) {
             model.addAttribute("addOffersBindingModel", new AddOffersBindingModel());
